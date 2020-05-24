@@ -1,7 +1,12 @@
-## Facetted Plot 
-## groups are make by diff num of rooms
+Facet Graph
+================
 
+*author*: **[Niccolò Salvini](https://niccolosalvini.netlify.app/)**
+*date*: 24 maggio, 2020
 
+<p align="center">
+
+``` r
 ldataset = dataset %>%
   filter(price >= 500L & price <= 5047L) %>%
   filter(condom >= 0L & condom <= 1030L) %>%
@@ -13,4 +18,9 @@ q = ggplot(ldataset) +
   scale_color_gradient() +
   theme_minimal() +
   facet_wrap(vars(nroom), scales = "free_x")
-ggplotly(q)
+q
+```
+
+![](imgOut/Jittered_Box_Plot-1.png)<!-- -->
+
+</p>

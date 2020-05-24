@@ -1,0 +1,60 @@
+---
+title: "Density Plot"
+output: github_document
+---
+
+_author_: **[Niccolò Salvini](https://niccolosalvini.netlify.app/)**
+_date_: `r format(Sys.Date(), "%d %B, %Y")`
+
+
+
+
+
+```{r global.options, include=FALSE, message=FALSE}
+
+knitr::opts_chunk$set(
+  warning = FALSE,  
+  strip.white = TRUE,                 # if FALSE knitr will not remove white spaces at the beg or end
+  fig.path = "imgOut/",                  # file path to the directory DESTINATION where knitr shall store the
+  fig.width=12,                       # the width for plots created by code chunk
+  fig.height=8,                       # the height for plots created by code chunk
+  cache = FALSE                       # if TRUE knitr will cache the results to reuse in future knits
+)
+
+
+knitr::knit_hooks$set(imgcenter = function(before, options, envir){  # to center image 
+  if (before) {                                                      # add imgcenter = TRUE
+    htmltools::HTML("<p align='center'>")                            # to the chunk options
+  } else {
+    htmltools::HTML("</p>")
+  }
+}
+)
+source("libs.R")
+
+```
+
+
+```{r load_data, echo=FALSE, message=FALSE}
+
+library(readr)
+dataset <- read_delim("data/final_dataset.csv", 
+    ";", escape_double = FALSE, col_types = cols(X1 = col_skip(), 
+        nroom = col_factor(levels = c("1", 
+            "2", "3", "4", "5", "6"))), trim_ws = TRUE)
+
+```
+
+ 
+```{r Density_Plot, imgcenter = TRUE}
+ddataset = dataset %>%
+  filter(price >= 500L & price <= 15128L)
+
+m = ggplot(ddataset) +
+  aes(x = price, fill = nroom) +
+  geom_density(adjust = 1L) +
+  scale_fill_hue() +
+  labs(x = "price", y = "nrooms", title = "Density Plot", subtitle = "price VS nrooms")
+m
+```
+

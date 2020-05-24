@@ -1,0 +1,67 @@
+---
+title: "Jittered Box Plot"
+output: github_document
+---
+
+_author_: **[Niccolò Salvini](https://niccolosalvini.netlify.app/)**
+_date_: `r format(Sys.Date(), "%d %B, %Y")`
+
+
+
+
+
+```{r global.options, include=FALSE, message=FALSE}
+
+knitr::opts_chunk$set(
+  warning = FALSE,  
+  strip.white = TRUE,                 # if FALSE knitr will not remove white spaces at the beg or end
+  fig.path = "imgOut/",               # file path to the directory DESTINATION where knitr shall store the
+  fig.width=12,                       # the width for plots created by code chunk
+  fig.height=8,                       # the height for plots created by code chunk
+  cache = FALSE                       # if TRUE knitr will cache the results to reuse in future knits
+)
+
+
+knitr::knit_hooks$set(imgcenter = function(before, options, envir){  # to center image 
+  if (before) {                                                      # add imgcenter = TRUE
+    htmltools::HTML("<p align='center'>")                            # to the chunk options
+  } else {
+    htmltools::HTML("</p>")
+  }
+}
+)
+source("libs.R")
+
+```
+
+
+```{r load_data, echo=FALSE, message=FALSE}
+
+library(readr)
+dataset = read_delim("data/final_dataset.csv", 
+    ";", escape_double = FALSE, col_types = cols(X1 = col_skip(), 
+        floor = col_factor(levels = c("0", 
+            "1", "2", "3", "4", "5", "6", 
+            "7", "8", "9", "10", "11", "12"))), 
+    trim_ws = TRUE)
+
+```
+
+ 
+```{r Jittered_Box_Plot, imgcenter = TRUE}
+
+floordataset = dataset %>%
+  filter(price >= 500L & price <= 10581L) %>%
+  filter(!(floor %in% c("NA", "12", "10")))
+
+
+p = ggplot(data = floordataset,aes(x=nroom, y=price)) +
+  geom_boxplot(fill=NA, alpha=0.5) +
+  geom_jitter(aes(colour=floor, text=paste("price is good")), width=0.25, alpha=0.5) +
+  geom_hline(yintercept=mean(floordataset$price)) +
+  labs(title = "How much the floors affect the price given the number of rooms",
+       x = "nroom",
+       y = "price")
+p
+```
+

@@ -1,0 +1,62 @@
+---
+output: 
+  github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+
+
+
+```{r global.options, include=FALSE}
+knitr::opts_chunk$set(
+  warning = FALSE,  
+  strip.white = TRUE,                 # if FALSE knitr will not remove white spaces at the beg or end
+  fig.path = "img/",                  # file path to the directory DESTINATION where knitr shall store the
+  fig.width=12,                       # the width for plots created by code chunk
+  fig.height=8,                       # the height for plots created by code chunk
+  cache = FALSE                       # if TRUE knitr will cache the results to reuse in future knits
+)
+
+
+knitr::knit_hooks$set(imgcenter = function(before, options, envir){  # to center image 
+  if (before) {                                                      # add imgcenter = TRUE
+    htmltools::HTML("<p align='center'>")                            # to the chunk options
+  } else {
+    htmltools::HTML("</p>")
+  }
+})
+
+set.seed(27) 
+```
+
+
+
+<img src="logo.png" align="right" height="80" />
+ 
+# "Plottando"
+
+_author_: **[Niccolò Salvini](https://niccolosalvini.netlify.app/)**
+_date_: `r format(Sys.Date(), "%d %B, %Y")`
+
+
+<br> <br> 
+
+
+```{r FIRENZE, echo=FALSE, imgcenter = TRUE, fig.cap = "FIRENZE", fig.retina=1}
+knitr::include_graphics("FIRENZE.jpeg") 
+```
+
+### IG-out:
+
+
+
+### Description:
+
+This repo sets up together all the work in plottin  I have been putting all around projects. It also make my visualization code fast reproducible. Moreover It allows me to have a glance of the visualization communication power wrt to its goal, aaand to have a clue of which type of data are suited for this; eg maps need long and lat ... They are all mainly based on `ggplot2` and `Plotly`, but sometimes other represenation are take from other packages. the **libs.R** will clear up the libraries that I am using throughout the project.
+
+### Visuals:
+
+### License:
+
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licenza Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Quest'opera è distribuita con Licenza <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribuzione 4.0 Internazionale</a>.
