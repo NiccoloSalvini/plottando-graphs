@@ -11,7 +11,6 @@ _date_: `r format(Sys.Date(), "%d %B, %Y")`
 
 
 ```{r global.options, include=FALSE, message=FALSE}
-
 knitr::opts_chunk$set(
   warning = FALSE,  
   strip.white = TRUE,                 # if FALSE knitr will not remove white spaces at the beg or end
@@ -21,17 +20,21 @@ knitr::opts_chunk$set(
   cache = FALSE                       # if TRUE knitr will cache the results to reuse in future knits
 )
 
-
-knitr::knit_hooks$set(imgcenter = function(before, options, envir){  # to center image 
-  if (before) {                                                      # add imgcenter = TRUE
-    htmltools::HTML("<p align='center'>")                            # to the chunk options
-  } else {
-    htmltools::HTML("</p>")
-  }
+theme_nicco = function (base_size = 11, base_family = "") {
+    theme_bw() %+replace% 
+    theme(
+      text = element_text(family = "sans", size = 12),
+      plot.title = element_text(face = "bold", size = 14),
+      panel.background  = element_blank(),
+      axis.ticks = element_line(colour = "grey70", size = 0.2),
+      plot.background = element_rect(fill="white", colour=NA),
+      legend.background = element_rect(fill="transparent", colour=NA),
+      legend.key = element_rect(fill="transparent", colour=NA)
+    )
 }
-)
-source("libs.R")
 
+
+source("libs.R")
 ```
 
 
@@ -42,26 +45,33 @@ dataset = read_delim("data/final_dataset.csv",
     ";", escape_double = FALSE, col_types = cols(X1 = col_skip(), 
         floor = col_factor(levels = c("0", 
             "1", "2", "3", "4", "5", "6", 
-            "7", "8", "9", "10", "11", "12"))), 
-    trim_ws = TRUE)
+            "7", "8", "9", "10", "11", "12")),
+        nroom = col_factor(levels = c("1","2","3","4","5","6" ))
+        ), 
+    trim_ws = TRUE) %>% 
+  as_tibble()
 
 ```
 
  
-```{r Jittered_Box_Plot, imgcenter = TRUE}
+```{r Jittered_Box_Plot, imgcenter = TRUE, warning=FALSE}
 
 floordataset = dataset %>%
-  filter(price >= 500L & price <= 10581L) %>%
-  filter(!(floor %in% c("NA", "12", "10")))
+  dplyr::filter(price >= 500 & price <= 10581) %>%
+  dplyr::filter(!(floor %in% c("NA", "12", "10"))) 
 
 
-p = ggplot(data = floordataset,aes(x=nroom, y=price)) +
+p = ggplot(data = floordataset,
+           aes(x=nroom, y=price)) +
   geom_boxplot(fill=NA, alpha=0.5) +
   geom_jitter(aes(colour=floor, text=paste("price is good")), width=0.25, alpha=0.5) +
-  geom_hline(yintercept=mean(floordataset$price)) +
+  geom_hline(yintercept=mean(dataset$price)) +
   labs(title = "How much the floors affect the price given the number of rooms",
        x = "nroom",
-       y = "price")
+       y = "price") +
+  theme_nicco() +
+  scale_colour_brewer(type = "div", palette = "RdYlGn")
 p
 ```
+
 

@@ -14,13 +14,13 @@ _date_: `r format(Sys.Date(), "%d %B, %Y")`
 
 knitr::opts_chunk$set(
   warning = FALSE,  
-  strip.white = TRUE,                 # if FALSE knitr will not remove white spaces at the beg or end
-  fig.path = "imgOut/",               # file path to the directory DESTINATION where knitr shall store the
-  fig.width=12,                       # the width for plots created by code chunk
-  fig.height=8,                       # the height for plots created by code chunk
-  cache = FALSE                       # if TRUE knitr will cache the results to reuse in future knits
+  strip.white = TRUE,
+  fig.path = "imgOut/", 
+  fig.width=12,
+  fig.height=8,
+  cache = FALSE
 )
-
+source("libs.R")
 
 knitr::knit_hooks$set(imgcenter = function(before, options, envir){  # to center image 
   if (before) {                                                      # add imgcenter = TRUE
@@ -30,7 +30,19 @@ knitr::knit_hooks$set(imgcenter = function(before, options, envir){  # to center
   }
 }
 )
-source("libs.R")
+
+theme_nicco = function (base_size = 11, base_family = "") {
+    theme_bw() %+replace% 
+    theme(
+      text = element_text(family = "sans", size = 12),
+      plot.title = element_text(face = "bold", size = 14),
+      panel.background  = element_blank(),
+      axis.ticks = element_line(colour = "grey70", size = 0.2),
+      plot.background = element_rect(fill="white", colour=NA),
+      legend.background = element_rect(fill="transparent", colour=NA),
+      legend.key = element_rect(fill="transparent", colour=NA)
+    )
+}
 
 ```
 
@@ -38,6 +50,7 @@ source("libs.R")
 ```{r load_data, echo=FALSE, message=FALSE}
 
 library(readr)
+
 dataset = read_delim("data/final_dataset.csv", 
     ";", escape_double = FALSE, col_types = cols(X1 = col_skip(), 
         floor = col_factor(levels = c("0", 
@@ -47,21 +60,21 @@ dataset = read_delim("data/final_dataset.csv",
 
 ```
 
- 
+ z
 ```{r Jittered_Box_Plot, imgcenter = TRUE}
 
 ldataset = dataset %>%
-  filter(price >= 500L & price <= 5047L) %>%
-  filter(condom >= 0L & condom <= 1030L) %>%
-  filter(!(floor %in% c("NA", "12", "10")))
+  dplyr::filter(price >= 500L & price <= 5047L) %>%
+  dplyr::filter(condom >= 0L & condom <= 1030L) %>%
+  dplyr::filter(!(floor %in% c("NA", "12", "10")))
 
 q = ggplot(ldataset) +
   aes(x = price, y = condom, colour = condom, size = condom) +
   geom_point() +
   scale_color_gradient() +
   theme_minimal() +
-  facet_wrap(vars(nroom), scales = "free_x")
+  facet_wrap(vars(nroom), scales = "free_x") +
+  theme_nicco()
 q
 
 ```
-
