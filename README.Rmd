@@ -42,11 +42,6 @@ _date_: `r format(Sys.Date(), "%d %B, %Y")`
 
 <br> <br> 
 
-
-```{r FIRENZE, echo=FALSE, imgcenter = TRUE, fig.cap = "FIRENZE", fig.retina=1}
-knitr::include_graphics("FIRENZE.jpeg") 
-```
-
 ### IG-out:
 
 
