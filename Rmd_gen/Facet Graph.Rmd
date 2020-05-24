@@ -35,7 +35,7 @@ theme_nicco = function (base_size = 11, base_family = "") {
     theme_bw() %+replace% 
     theme(
       text = element_text(family = "sans", size = 12),
-      plot.title = element_text(face = "bold", size = 14),
+      plot.title = element_text(face = "bold", size = 14, margin=margin(0,0,30,0)),
       panel.background  = element_blank(),
       axis.ticks = element_line(colour = "grey70", size = 0.2),
       plot.background = element_rect(fill="white", colour=NA),
@@ -60,7 +60,6 @@ dataset = read_delim("data/final_dataset.csv",
 
 ```
 
- z
 ```{r Facetted_Graph}
 
 ldataset = dataset %>%
@@ -74,6 +73,7 @@ q = ggplot(ldataset) +
   scale_color_gradient() +
   theme_minimal() +
   facet_wrap(vars(nroom), scales = "free_x") +
+  ggtitle("Facetted_Graph bubbled for nrooms") +
   theme_nicco()
 q
 

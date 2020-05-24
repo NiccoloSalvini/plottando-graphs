@@ -4,8 +4,6 @@ Facet Graph
 *author*: **[Niccolò Salvini](https://niccolosalvini.netlify.app/)**
 *date*: 24 maggio, 2020
 
-z
-
 ``` r
 ldataset = dataset %>%
   dplyr::filter(price >= 500L & price <= 5047L) %>%
@@ -18,6 +16,7 @@ q = ggplot(ldataset) +
   scale_color_gradient() +
   theme_minimal() +
   facet_wrap(vars(nroom), scales = "free_x") +
+  ggtitle("Facetted_Graph bubbled for nrooms") +
   theme_nicco()
 q
 ```

@@ -28,7 +28,7 @@ theme_nicco = function (base_size = 11, base_family = "") {
     theme_bw() %+replace% 
     theme(
       text = element_text(family = "sans", size = 12),
-      plot.title = element_text(face = "bold", size = 14),
+      plot.title = element_text(face = "bold", size = 14, margin=margin(0,0,30,0)),
       panel.background  = element_blank(),
       axis.ticks = element_line(colour = "grey70", size = 0.2),
       plot.background = element_rect(fill="white", colour=NA),
@@ -79,11 +79,3 @@ m = ggplot(ddataset) +
   theme_nicco()
 m
 ```
-
-
-```{r illustrazione, imgcenter = TRUE, echo=FALSE}
-knitr::include_graphics("imgOut/Density_Plot-1.png")
-
-```
-
-

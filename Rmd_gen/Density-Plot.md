@@ -18,9 +18,3 @@ m
 ```
 
 ![](imgOut/Density_Plot-1.png)<!-- -->
-
-<p align="center">
-
-<img src="imgOut/Density_Plot-1.png" width="1152" />
-
-</p>
