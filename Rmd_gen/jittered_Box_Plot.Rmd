@@ -11,13 +11,14 @@ _date_: `r format(Sys.Date(), "%d %B, %Y")`
 
 
 ```{r global.options, include=FALSE, message=FALSE}
+
 knitr::opts_chunk$set(
   warning = FALSE,  
-  strip.white = TRUE,                 # if FALSE knitr will not remove white spaces at the beg or end
-  fig.path = "imgOut/",               # file path to the directory DESTINATION where knitr shall store the
-  fig.width=12,                       # the width for plots created by code chunk
-  fig.height=8,                       # the height for plots created by code chunk
-  cache = FALSE                       # if TRUE knitr will cache the results to reuse in future knits
+  strip.white = TRUE,                 
+  fig.path = "imgOut/",               
+  fig.width=12,                       
+  fig.height=8,                       
+  cache = FALSE                       
 )
 
 theme_nicco = function (base_size = 11, base_family = "") {
@@ -64,7 +65,7 @@ dataset = read_delim("data/final_dataset.csv",
 ```
 
  
-```{r Jittered_Box_Plot warning=FALSE}
+```{r Jittered_Box_Plot, warning=FALSE}
 
 floordataset = dataset %>%
   dplyr::filter(price >= 500 & price <= 10581) %>%
