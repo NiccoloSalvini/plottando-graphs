@@ -35,6 +35,16 @@ theme_nicco = function (base_size = 11, base_family = "") {
 
 
 source("libs.R")
+
+
+knitr::knit_hooks$set(imgcenter = function(before, options, envir){  # to center image 
+  if (before) {                                                      # add imgcenter = TRUE
+    htmltools::HTML("<p align='center'>")                            # to the chunk options
+  } else {
+    htmltools::HTML("</p>")
+  }
+})
+
 ```
 
 
@@ -54,7 +64,7 @@ dataset = read_delim("data/final_dataset.csv",
 ```
 
  
-```{r Jittered_Box_Plot, imgcenter = TRUE, warning=FALSE}
+```{r Jittered_Box_Plot warning=FALSE}
 
 floordataset = dataset %>%
   dplyr::filter(price >= 500 & price <= 10581) %>%

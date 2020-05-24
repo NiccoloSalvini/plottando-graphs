@@ -23,4 +23,4 @@ p = ggplot(data = floordataset,
 p
 ```
 
-![](imgOut/Jittered_Box_Plot-1.png)<!-- -->
+![](Rmdgen/imgOut/Jittered_Box_Plot-1.png)<!-- -->

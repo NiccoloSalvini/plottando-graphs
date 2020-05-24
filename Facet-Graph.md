@@ -24,6 +24,6 @@ q = ggplot(ldataset) +
 q
 ```
 
-![](imgOut/Jittered_Box_Plot-1.png)<!-- -->
+![](Rmdgen/imgOut/Jittered_Box_Plot-1.png)<!-- -->
 
 </p>

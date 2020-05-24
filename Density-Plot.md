@@ -21,6 +21,6 @@ m
 
 <p align="center">
 
-<img src="imgOut/Density_Plot-1.png" width="1152" />
+<img src="Rmdgen/imgOut/Density_Plot-1.png" width="1152" />
 
 </p>
