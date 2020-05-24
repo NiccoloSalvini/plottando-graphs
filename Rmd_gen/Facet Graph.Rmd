@@ -61,7 +61,7 @@ dataset = read_delim("data/final_dataset.csv",
 ```
 
  z
-```{r Jittered_Box_Plot, imgcenter = TRUE}
+```{r Facetted_Graph}
 
 ldataset = dataset %>%
   dplyr::filter(price >= 500L & price <= 5047L) %>%

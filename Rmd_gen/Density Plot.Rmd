@@ -37,6 +37,15 @@ theme_nicco = function (base_size = 11, base_family = "") {
     )
 }
 
+
+knitr::knit_hooks$set(imgcenter = function(before, options, envir){  # to center image 
+  if (before) {                                                      # add imgcenter = TRUE
+    htmltools::HTML("<p align='center'>")                            # to the chunk options
+  } else {
+    htmltools::HTML("</p>")
+  }
+})
+
 ```
 
 
@@ -70,4 +79,11 @@ m = ggplot(ddataset) +
   theme_nicco()
 m
 ```
+
+
+```{r illustrazione, imgcenter = TRUE, echo=FALSE}
+knitr::include_graphics("imgOut/Density_Plot-1.png")
+
+```
+
 
