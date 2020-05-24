@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<img src="logo.png" align="right" height="80" />
+<img src="logobis.png" align="right" height="100" />
 
 # “Plottando”
 
@@ -12,6 +12,10 @@
 
 ### IG-out:
 
+**[ecco il profilo](https://www.instagram.com/plottando/)**
+
+[![](img/url-1.png)](https://www.instagram.com/plottando/)<!-- -->
+
 ### Description:
 
 This repo sets up together all the work in plottin I have been putting
@@ -20,11 +24,23 @@ reproducible. Moreover It allows me to have a glance of the
 visualization communication power wrt to its goal, aaand to have a clue
 of which type of data are suited for this; eg maps need long and lat …
 They are all mainly based on `ggplot2` and `Plotly`, but sometimes other
-represenation are take from other packages. the **libs.R** will clear up
-the libraries that I am using throughout the
+represenation are taken from other packages. the **libs.R** will clear
+up the libraries that I am using throughout the
 project.
 
 ### Visuals:
+
+<p align="center">
+
+<img src="Rmd_gen/imgOut/Jittered_Box_Plot-1.png" width="1152" />
+
+</p>
+
+<p align="center">
+
+<img src="Rmd_gen/imgOut/Facetted_Graph-1.png" width="1152" />
+
+</p>
 
 ### License:
 

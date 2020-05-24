@@ -11,13 +11,22 @@ ldataset = dataset %>%
   dplyr::filter(!(floor %in% c("NA", "12", "10")))
 
 q = ggplot(ldataset) +
-  aes(x = price, y = condom, colour = condom, size = condom) +
+  aes(x = price, y = condom, 
+      colour = condom, 
+      size = condom) +
   geom_point() +
   scale_color_gradient() +
   theme_minimal() +
   facet_wrap(vars(nroom), scales = "free_x") +
+  scale_colour_gradientn(colours = terrain.colors(10)) +
   ggtitle("Facetted_Graph bubbled for nrooms") +
   theme_nicco()
+```
+
+    ## Scale for 'colour' is already present. Adding another scale for 'colour',
+    ## which will replace the existing scale.
+
+``` r
 q
 ```
 

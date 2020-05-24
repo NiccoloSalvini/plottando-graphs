@@ -32,7 +32,7 @@ set.seed(27)
 
 
 
-<img src="logo.png" align="right" height="80" />
+<img src="logobis.png" align="right" height="100" />
  
 # "Plottando"
 
@@ -44,13 +44,31 @@ _date_: `r format(Sys.Date(), "%d %B, %Y")`
 
 ### IG-out:
 
+**[ecco il profilo](https://www.instagram.com/plottando/)**
+
+```{r url, echo=FALSE}
+knitr::include_url("https://www.instagram.com/plottando/")
+
+```
 
 
 ### Description:
 
-This repo sets up together all the work in plottin  I have been putting all around projects. It also make my visualization code fast reproducible. Moreover It allows me to have a glance of the visualization communication power wrt to its goal, aaand to have a clue of which type of data are suited for this; eg maps need long and lat ... They are all mainly based on `ggplot2` and `Plotly`, but sometimes other represenation are take from other packages. the **libs.R** will clear up the libraries that I am using throughout the project.
+This repo sets up together all the work in plottin  I have been putting all around projects. It also make my visualization code fast reproducible. Moreover It allows me to have a glance of the visualization communication power wrt to its goal, aaand to have a clue of which type of data are suited for this; eg maps need long and lat ... They are all mainly based on `ggplot2` and `Plotly`, but sometimes other represenation are taken from other packages. the **libs.R** will clear up the libraries that I am using throughout the project.
 
 ### Visuals:
+
+```{r visual1, imgcenter = TRUE, echo=FALSE}
+knitr::include_graphics("Rmd_gen/imgOut/Jittered_Box_Plot-1.png")
+
+```
+
+```{r visual2, imgcenter = TRUE, echo=FALSE}
+knitr::include_graphics("Rmd_gen/imgOut/Facetted_Graph-1.png")
+
+```
+
+
 
 ### License:
 
